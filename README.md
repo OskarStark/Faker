@@ -84,7 +84,7 @@ to run `rector/rector`.
 Another way is to use it in your `rector.php` file:
 
 ```php
-$faker = require 'vendor/fakerphp/faker/rector-migrate.php';
+$rectorConfig->import('vendor/fakerphp/faker/rector-migrate.php');
 $faker($rectorConfig);
 ```
 
