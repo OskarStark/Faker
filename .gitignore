@@ -5,4 +5,6 @@
 /vendor-bin/psalm/vendor/
 /vendor-bin/rector/vendor/
 /.php-cs-fixer.cache
+/.phpunit.cache/
 /composer.lock
+/vendor-bin/rector/.phpunit.cache/

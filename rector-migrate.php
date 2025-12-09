@@ -2,12 +2,13 @@
 
 declare(strict_types=1);
 
-use Faker\Generator;
-use Rector\Config;
-use Rector\Transform;
+require_once __DIR__ . '/rector/FakerPropertyToMethodCallRector.php';
+
+use Faker\Rector\FakerPropertyToMethodCallRector;
+use Rector\Config\RectorConfig;
 
 // This file configures rector/rector to replace all deprecated property usages with their equivalent functions.
-return static function (Config\RectorConfig $rectorConfig): void {
+return static function (RectorConfig $rectorConfig): void {
     $properties = [
         'address',
         'amPm',
@@ -149,13 +150,7 @@ return static function (Config\RectorConfig $rectorConfig): void {
     ];
 
     $rectorConfig->ruleWithConfiguration(
-        Transform\Rector\Assign\PropertyFetchToMethodCallRector::class,
-        array_map(static function (string $property): Transform\ValueObject\PropertyFetchToMethodCall {
-            return new Transform\ValueObject\PropertyFetchToMethodCall(
-                Generator::class,
-                $property,
-                $property,
-            );
-        }, $properties),
+        FakerPropertyToMethodCallRector::class,
+        $properties,
     );
 };
