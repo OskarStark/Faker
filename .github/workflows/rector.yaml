@@ -49,3 +49,6 @@ jobs:
 
       - name: "Run rector"
         run: "vendor/bin/rector process test/ --ansi --config=rector-migrate.php --dry-run || true"
+
+      - name: "Run rector tests"
+        run: "vendor-bin/rector/vendor/bin/phpunit --configuration vendor-bin/rector/phpunit.xml"
